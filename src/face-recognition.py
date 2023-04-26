@@ -1,8 +1,13 @@
+#
+# https://omes-va.com/face-recognition-python/
+#
+
 import cv2
 import face_recognition as fr
+import plotext as plt
 
 # Imagen a comparar
-image = cv2.imread("../images/mili-emilio.png")
+image = cv2.imread("../images/manolo.jpg")
 face_loc = fr.face_locations(image)[0]
 #print("face_loc:", face_loc)
 face_image_encodings = fr.face_encodings(image, known_face_locations=[face_loc])[0]
@@ -11,10 +16,11 @@ print("face_image_encodings:", face_image_encodings)
 cv2.rectangle(image, (face_loc[3], face_loc[0]), (face_loc[1], face_loc[2]), (0, 255, 0))
 cv2.imshow("Image", image)
 cv2.waitKey(0)
-cv2.destroyAllWindows()'''
+cv2.destroyAllWindows()
+# '''
 ######################################################################################
 # Video Streaming
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cap = cv2.VideoCapture(0)
 while True:
      ret, frame = cap.read()
      if ret == False: break
@@ -26,7 +32,7 @@ while True:
                result = fr.compare_faces([face_image_encodings], face_frame_encodings)
                #print("Result:", result)
                if result[0] == True:
-                    text = "Emilio"
+                    text = "Manolito"
                     color = (125, 220, 0)
                else:
                     text = "Desconocido"
@@ -38,5 +44,6 @@ while True:
      k = cv2.waitKey(1)
      if k == 27 & 0xFF:
           break
+
 cap.release()
 cv2.destroyAllWindows()
