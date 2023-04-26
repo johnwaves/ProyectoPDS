@@ -26,7 +26,7 @@ while True:
                result = fr.compare_faces([face_image_encodings], face_frame_encodings)
                #print("Result:", result)
                if result[0] == True:
-                    text = "Gaby"
+                    text = "Emilio"
                     color = (125, 220, 0)
                else:
                     text = "Desconocido"
