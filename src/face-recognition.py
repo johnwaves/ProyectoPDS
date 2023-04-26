@@ -4,7 +4,6 @@
 
 import cv2
 import face_recognition as fr
-import plotext as plt
 
 # Imagen a comparar
 image = cv2.imread("../images/manolo.jpg")
