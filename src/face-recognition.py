@@ -1,6 +1,8 @@
 #
 # https://omes-va.com/face-recognition-python/
 #
+# pip install face-recognition
+# pip install opencv-contrib-python
 
 import cv2
 import face_recognition as fr
@@ -25,6 +27,7 @@ while True:
      if ret == False: break
      frame = cv2.flip(frame, 1)
      face_locations = fr.face_locations(frame, model="cnn")
+     
      if face_locations != []:
           for face_location in face_locations:
                face_frame_encodings = fr.face_encodings(frame, known_face_locations=[face_location])[0]
@@ -39,6 +42,7 @@ while True:
                cv2.rectangle(frame, (face_location[3], face_location[2]), (face_location[1], face_location[2] + 30), color, -1)
                cv2.rectangle(frame, (face_location[3], face_location[0]), (face_location[1], face_location[2]), color, 2)
                cv2.putText(frame, text, (face_location[3], face_location[2] + 20), 2, 0.7, (255, 255, 255), 1)
+     
      cv2.imshow("Frame", frame)
      k = cv2.waitKey(1)
      if k == 27 & 0xFF:
