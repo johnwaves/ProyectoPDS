@@ -5,7 +5,7 @@ import time
 import uuid
 
 # Numero de imagenes a capturar
-NUM_IMAGENES = 10
+NUM_IMAGENES = 50
 
 # Path donde se guardaran las imagenes
 DATA_IMG_PATH = os.path.join('data','img')
@@ -30,5 +30,3 @@ def captura_caras(nombre):
             break
     captura.release()
     cv2.destroyAllWindows()
-
-captura_caras('fran')
